@@ -202,3 +202,22 @@ body {
         }
     }
 }
+
+.display{
+    display: none;
+}
+
+
+.bar-active{
+    .password{
+        font-weight: map-get($font-weights, "between");
+        font-size: map-get($font-size, "large") + 5px;
+        opacity: 0.88;
+        color: map-get($colors, "quote-color");
+        transition: all ease-in-out 0.3s;
+
+        &:hover{
+            opacity: 0.5;
+        }
+    }
+}
