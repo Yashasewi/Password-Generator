@@ -1,0 +1,181 @@
+@import "./config";
+@import "./default";
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    // line-height: 1.5;
+    font-size: map-get($font-size, "large");
+    // line-height: 24px;
+    font-weight: 400;
+    color: map-get($colors, "font-color");
+    background-color: map-get($colors, "background");
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    // gap: 1.8rem;
+
+    .heading {
+        margin-top: 8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        user-select: none;
+        .main-heading {
+            font-weight: map-get($font-weights, "bold");
+            color: map-get($colors, "font-color");
+        }
+        .quote-heading {
+            color: map-get($colors, "quote-color");
+            font-size: map-get($font-size, "medium");
+            font-weight: map-get($font-weights, "medium");
+            margin: 0;
+        }
+    }
+}
+
+.bar {
+    width: 900px;
+    height: 50px;
+    user-select: none;
+    background-color: map-get($colors, "white");
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    border-radius: 13px;
+    border: 3px solid #dcd7bf;
+    padding: 0.1rem 1rem 0.1rem 1rem;
+
+    margin: 4rem 0rem 4rem 0;
+
+    .dots-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .dot {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #ebebeb;
+            margin: 0 0.1em;
+            // pointer-events: none;
+        }
+        &:hover {
+            color: darken($color: #ebebeb, $amount: 20%);
+        }
+    }
+    .element {
+        display: flex;
+        height: 100%;
+        gap: 1rem;
+    }
+    .copy {
+        opacity: 0.7;
+        border-left: 4px solid #dcd7bf;
+        padding-left: 5px;
+    }
+    .lock,
+    .dot,
+    .reset,
+    .copy {
+        width: auto;
+        height: 90%;
+        cursor: pointer;
+        transition: all ease-in-out 0.5s;
+        &:hover {
+            opacity: 1;
+            filter: contrast(70%);
+        }
+    }
+    .lock {
+        cursor: auto;
+        padding-top: 1px;
+        padding-right: 2rem;
+    }
+}
+
+.buttons {
+    display: flex;
+    gap: 5rem;
+    .btn {
+        color: map-get($colors, "button-color");
+        background-color: map-get($colors, "white");
+        font-weight: map-get($font-weights, "bold");
+        font-size: map-get($font-size, "button");
+        border: 2px solid #f6e7b0;
+        border-radius: 0.4rem;
+        padding: 0.3rem 1.1rem 0.3rem 1.1rem;
+        cursor: pointer;
+        transition-duration: 200ms;
+
+        &:hover {
+            box-shadow: 0 0 15px 1px rgb(208, 208, 208);
+            border: 2px solid map-get($colors, "white");
+        }
+    }
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0 1.8rem 0;
+    color: $slider-color;
+    transition: all ease-in 0.5s;
+    font-weight: map-get($font-weights, "between");
+    .value {
+        width: 2rem;
+        height: 100%;
+    }
+    input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+        width: 27rem;
+    }
+    /***** Track Styles *****/
+    /***** Chrome, Safari, Opera, and Edge Chromium *****/
+    input[type="range"]::-webkit-slider-runnable-track {
+        background: map-get($colors, "white");
+        height: 0.7rem;
+        border: solid 2px #e9e9e9;
+        border-radius: 1rem;
+    }
+
+    /******** Firefox ********/
+    input[type="range"]::-moz-range-track {
+        background: map-get($colors, "white");
+        height: 0.7rem;
+        border: solid 2px #e9e9e9;
+        border-radius: 1rem;
+    }
+}
+
+.input-buttons {
+    .in-btn {
+        font-weight: map-get($font-weights, "between");
+        border-radius: 10px;
+        padding: 0;
+        margin: 0.25em 1em;
+        border: none;
+        padding: 0.25em 1em;
+        cursor: pointer;
+        user-select: none;
+        background: $button-color;
+        color: map-get($colors, "white");
+        text-align: center;
+        transition: all ease-in 0.5s;
+        &:hover {
+            background: darken($button-color, 13%);
+        }
+    }
+}
