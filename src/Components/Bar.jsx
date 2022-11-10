@@ -1,6 +1,6 @@
-import image1 from "../assets/lock.png";
-import image2 from "../assets/Reset.png";
-import image3 from "../assets/copy.png";
+import image1 from "../assets/Images/lock.png";
+import image2 from "../assets/Images/Reset.png";
+import image3 from "../assets/Images/copy.png";
 import { useState } from "react";
 
 function Bar() {
