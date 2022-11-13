@@ -10,8 +10,15 @@ const Allowed = {
     Symbols: "!$^&*-=+_?",
 };
 
+
 // password generator
-function generatePassword(length) {
+function generatePassword(
+    length,
+    charset = Allowed.Uppers +
+        Allowed.Numbers +
+        Allowed.Lowers +
+        Allowed.Symbols
+) {
     const crypto = window.crypto || window.msCrypto;
 
     if (typeof crypto === "undefined") {
@@ -20,8 +27,8 @@ function generatePassword(length) {
         );
     }
 
-    const charset =
-        Allowed.Uppers + Allowed.Numbers + Allowed.Lowers + Allowed.Symbols;
+    // const charset =
+    //     Allowed.Uppers + Allowed.Numbers + Allowed.Lowers + Allowed.Symbols;
 
     const indexes = crypto.getRandomValues(new Uint32Array(length));
 
@@ -38,10 +45,10 @@ const password = generatePassword(16);
 
 function Bar() {
     const [length, setLength] = useState(10);
-
+    // setLength(len)
     return (
         <div>
-            <div className="bar ">
+            <div className="bar display">
                 <img src={image1} className="lock" alt="lock" />
                 {/* <img src={image2} className="dots" alt="dots" srcset="" /> */}
                 {/* <div className="test">..........</div> */}
@@ -55,7 +62,7 @@ function Bar() {
                     <img src={image3} className="copy" alt="copy" />
                 </div>
             </div>
-            <div className="bar-active bar display">
+            <div className="bar-active bar">
                 <img src={image1} className="lock" alt="lock" />
                 <div className="password ">{password}</div>
                 <div className="element">
