@@ -8,7 +8,8 @@ function App() {
             <div className="heading">
                 <h1 className="main-heading"> RANDOM PASSWORD GENERATOR</h1>
                 <h5 className="quote-heading">
-                    Create strong and secure passwords to keep your account safe.
+                    Create strong and secure passwords to keep your account
+                    safe.
                 </h5>
             </div>
             <Bar />
