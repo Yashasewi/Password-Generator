@@ -1,8 +1,11 @@
+import { useRef } from "react";
 import "../assets/main.scss";
 import Bar from "./Bar";
 import Slider from "./Slider";
 
 function App() {
+    // const slider = useRef();
+
     return (
         <div className="App">
             <div className="heading">
