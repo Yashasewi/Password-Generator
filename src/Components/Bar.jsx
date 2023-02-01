@@ -41,7 +41,7 @@ function generatePassword(
 
 function Bar({ length }) {
     const password = generatePassword(length);
-    const dots = new Array(length).fill(0).map((dot, ind) => {
+    const dots = new Array(8).fill(0).map((dot, ind) => {
         return <div key={ind} className="dot"></div>;
     });
 
@@ -49,8 +49,12 @@ function Bar({ length }) {
         <div>
             <div className="bar">
                 <img src={image1} className="lock" alt="lock" />
-                {/* <div className="dots-input">{dots}</div> */}
-                <div className="password ">{password}</div>
+                {length > 0 ? (
+                    <div className="password ">{password}</div>
+                ) : (
+                    <div className="dots-input">{dots}</div>
+                )}
+
                 <div className="element">
                     <img src={image2} className="reset" alt="reset" />
                     <img src={image3} className="copy" alt="copy" />
@@ -61,12 +65,3 @@ function Bar({ length }) {
 }
 
 export default Bar;
-
-/* <div className="bar-active bar">
-                <img src={image1} className="lock" alt="lock" />
-                <div className="password ">{password}</div>
-                <div className="element">
-                    <img src={image2} className="reset" alt="reset" />
-                    <img src={image3} className="copy" alt="copy" />
-                </div>
-            </div> */
