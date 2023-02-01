@@ -9,7 +9,7 @@ const Allowed = {
     Symbols: "!$^&*-=+_?",
 };
 
-// password generator
+// password generator.
 function generatePassword(
     length,
     charset = Allowed.Uppers +
@@ -41,25 +41,15 @@ function generatePassword(
 
 function Bar({ length }) {
     const password = generatePassword(length);
+    const dots = new Array(length).fill(0).map((dot, ind) => {
+        return <div key={ind} className="dot"></div>;
+    });
 
     return (
         <div>
-            <div className="bar display">
+            <div className="bar">
                 <img src={image1} className="lock" alt="lock" />
-                {/* <img src={image2} className="dots" alt="dots" srcset="" /> */}
-                {/* <div className="test">..........</div> */}
-                <div className="dots-input">
-                    {new Array(length).fill(0).map((dot, ind) => {
-                        return <div key={ind} className="dot"></div>;
-                    })}
-                </div>
-                <div className="element">
-                    <img src={image2} className="reset" alt="reset" />
-                    <img src={image3} className="copy" alt="copy" />
-                </div>
-            </div>
-            <div className="bar-active bar">
-                <img src={image1} className="lock" alt="lock" />
+                {/* <div className="dots-input">{dots}</div> */}
                 <div className="password ">{password}</div>
                 <div className="element">
                     <img src={image2} className="reset" alt="reset" />
@@ -71,3 +61,12 @@ function Bar({ length }) {
 }
 
 export default Bar;
+
+/* <div className="bar-active bar">
+                <img src={image1} className="lock" alt="lock" />
+                <div className="password ">{password}</div>
+                <div className="element">
+                    <img src={image2} className="reset" alt="reset" />
+                    <img src={image3} className="copy" alt="copy" />
+                </div>
+            </div> */
