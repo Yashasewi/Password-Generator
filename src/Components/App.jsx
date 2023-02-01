@@ -5,7 +5,7 @@ import Slider from "./Slider";
 import Input_buttons from "./Input_buttons";
 
 function App() {
-    const [length, setLength] = useState(8);
+    const [length, setLength] = useState(0);
 
     return (
         <div className="App">
