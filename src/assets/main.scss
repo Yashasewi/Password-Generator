@@ -1,6 +1,8 @@
 @import "./config";
 @import "./default";
 
+//https://www.youtube.com/watch?v=nu5mdN2JIwM
+
 /* Set core body defaults */
 body {
     min-height: 100vh;
@@ -54,6 +56,18 @@ body {
     padding: 0.1rem 1rem 0.1rem 1rem;
 
     margin: 4rem 0rem 4rem 0;
+
+    .password {
+        font-weight: map-get($font-weights, "between");
+        font-size: map-get($font-size, "large") + 5px;
+        opacity: 0.88;
+        color: map-get($colors, "quote-color");
+        transition: all ease-in-out 0.3s;
+
+        &:hover {
+            letter-spacing: 0.02rem;
+        }
+    }
 
     .dots-input {
         display: flex;
@@ -209,18 +223,4 @@ body {
 
 .display {
     display: none;
-}
-
-.bar-active {
-    .password {
-        font-weight: map-get($font-weights, "between");
-        font-size: map-get($font-size, "large") + 5px;
-        opacity: 0.88;
-        color: map-get($colors, "quote-color");
-        transition: all ease-in-out 0.3s;
-
-        &:hover {
-            letter-spacing: 0.02rem;
-        }
-    }
 }
