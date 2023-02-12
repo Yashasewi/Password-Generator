@@ -86,7 +86,7 @@ body {
             color: darken($color: #ebebeb, $amount: 20%);
         }
     }
-    .element {
+    .icon-group {
         display: flex;
         height: 100%;
         gap: 1rem;
@@ -96,7 +96,7 @@ body {
         border-left: 4px solid #dcd7bf;
         padding-left: 5px;
     }
-    .lock,
+    .lock-icon,
     .dot,
     .reset,
     .copy {

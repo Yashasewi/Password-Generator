@@ -12,7 +12,7 @@ function Slider({ length, setLength }) {
                 min={4}
                 max={32}
                 step={1}
-                defaultValue={length}
+                Value={length}
                 onChange={handleChange}
             />
             <div className="value">{length}</div>

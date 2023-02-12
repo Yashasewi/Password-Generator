@@ -10,7 +10,7 @@ function App() {
     return (
         <div className="App">
             <div className="heading">
-                <h1 className="main-heading"> RANDOM PASSWORD GENERATOR</h1>
+                <h1 className="main-heading">RANDOM PASSWORD GENERATOR</h1>
                 <h5 className="quote-heading">
                     Create strong and secure passwords to keep your account
                     safe.
