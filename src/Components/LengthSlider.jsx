@@ -1,15 +1,7 @@
-function Slider({ length, setLength }) {
+function LengthSlider({ length, setLength }) {
     const handleChange = (event) => {
         const newValue = event.target.value;
-        if (newValue > 32) {
-            setLength(32);
-            return;
-        }
-        if (newValue < 4) {
-            setLength(4);
-            return;
-        }
-        setLength(newValue);
+        setLength(newValue > 32 ? 32 : newValue < 4 ? 4 : newValue);
     };
     return (
         <div className="slider">
@@ -27,4 +19,4 @@ function Slider({ length, setLength }) {
     );
 }
 
-export default Slider;
+export default LengthSlider;

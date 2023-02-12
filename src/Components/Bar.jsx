@@ -6,20 +6,31 @@ import copyIcon from "../assets/Images/copy.png";
 import { AiOutlineCopy } from "react-icons/ai";
 
 // Object containing allowed characters for password
-const AllowedChars = {
+//!@#$%^&*()_+-=[]{}|;:',.<>/?
+const AllChars = {
     Uppercase: "QWERTYUIOPASDFGHJKLZXCVBNM",
     Lowercase: "qwertyuiopasdfghjklzxcvbnm",
     Numbers: "1234567890",
     Symbols: "!$^&*-=+_?",
 };
 
+const EasyChars = {
+    ...AllChars,
+    Symbols: "",
+};
+
+const StrongChars = {
+    ...AllChars,
+    Symbols: "!@#$%^&*()_+-=[]{}|;:',.<>/?",
+};
+
 // Function to generate a random password of specified length
 function generatePassword(
     length,
-    charSet = AllowedChars.Uppercase +
-        AllowedChars.Numbers +
-        AllowedChars.Lowercase +
-        AllowedChars.Symbols
+    charSet = AllChars.Uppercase +
+        AllChars.Numbers +
+        AllChars.Lowercase +
+        AllChars.Symbols
 ) {
     // Check if the crypto API is supported in the browser
     const cryptoAPI = window.crypto || window.msCrypto;
@@ -43,12 +54,15 @@ function generatePassword(
 }
 
 // Component to display the password and related icons
-function Bar({ length }) {
+function Bar({ length, CharSet }) {
     const [reset, setReset] = useState(false);
     // Function to reset the password
     function ResetPassword() {
-        reset ? setReset(false) : setReset(true);
+        setReset(!reset);
     }
+
+    // console.log(length);
+    // console.log(CharSet);
 
     // Generate the password of the specified length
     const password = length > 0 ? generatePassword(length) : "";
@@ -80,7 +94,7 @@ function Bar({ length }) {
                     <img
                         src={resetIcon}
                         className="reset"
-                        alt="Reset"
+                        alt="NewPassword"
                         onClick={ResetPassword}
                     />
                     <img

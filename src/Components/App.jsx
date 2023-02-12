@@ -1,11 +1,22 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import "../assets/main.scss";
 import Bar from "./Bar";
-import Slider from "./Slider";
-import Input_buttons from "./Input_buttons";
+import LengthSlider from "./LengthSlider";
+import CharacterTypeButtons from "./CharacterTypeButtons";
 
 function App() {
     const [length, setLength] = useState(0);
+    const [moreSecure, setMoreSecure] = useState(false);
+    const [easyToRemember, setEasyToRemember] = useState(false);
+    const [letters, setLetters] = useState(false);
+    const [numbers, setNumbers] = useState(false);
+    const [symbols, setSymbols] = useState(false);
+
+    const charSet = {
+        letters,
+        numbers,
+        symbols,
+    };
 
     return (
         <div className="App">
@@ -16,13 +27,30 @@ function App() {
                     safe.
                 </h5>
             </div>
-            <Bar length={length} />
+            <Bar length={length} charSet={charSet} />
             <div className="buttons">
-                <button className="btn">More Secure</button>
-                <button className="btn">Easy to remember</button>
+                <button
+                    className={`btn ${moreSecure ? "active" : ""}`}
+                    onClick={() => setMoreSecure(!moreSecure)}
+                >
+                    More Secure
+                </button>
+                <button
+                    className={`btn ${easyToRemember ? "active" : ""}`}
+                    onClick={() => setEasyToRemember(!easyToRemember)}
+                >
+                    Easy To Remember
+                </button>
             </div>
-            <Slider length={length} setLength={setLength} />
-            <Input_buttons />
+            <LengthSlider length={length} setLength={setLength} />
+            <CharacterTypeButtons
+                letters={letters}
+                setLetters={setLetters}
+                numbers={numbers}
+                setNumbers={setNumbers}
+                symbols={symbols}
+                setSymbols={setSymbols}
+            />
         </div>
     );
 }
