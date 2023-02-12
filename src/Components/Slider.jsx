@@ -1,8 +1,15 @@
-import React, { useState } from "react";
-
 function Slider({ length, setLength }) {
     const handleChange = (event) => {
-        setLength(event.target.value);
+        const newValue = event.target.value;
+        if (newValue > 32) {
+            setLength(32);
+            return;
+        }
+        if (newValue < 4) {
+            setLength(4);
+            return;
+        }
+        setLength(newValue);
     };
     return (
         <div className="slider">
@@ -12,7 +19,7 @@ function Slider({ length, setLength }) {
                 min={4}
                 max={32}
                 step={1}
-                Value={length}
+                value={length}
                 onChange={handleChange}
             />
             <div className="value">{length}</div>
