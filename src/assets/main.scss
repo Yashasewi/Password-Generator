@@ -124,16 +124,30 @@ body {
         background-color: map-get($colors, "white");
         font-weight: map-get($font-weights, "bold");
         font-size: map-get($font-size, "button");
-        border: 2px solid #f6e7b0;
+        border: 1.5px solid #f6e7b0;
         border-radius: 0.4rem;
         padding: 0.3rem 1.1rem 0.3rem 1.1rem;
         cursor: pointer;
         transition-duration: 200ms;
 
         &:hover {
-            box-shadow: 0 0 15px 1px rgb(208, 208, 208);
-            border: 2px solid map-get($colors, "white");
+            // box-shadow: 0 0 15px 1px #f6e7b0;
+            border: 1.5px solid map-get($colors, "white");
+            // border: 1px solid #f6e7b0;
+            color: rgba(245, 158, 64, 0.76);
         }
+        // &:active {
+        //     box-shadow: 0 0 15px 1px #f6e7b0;
+        //     // border: 2px solid map-get($colors, "white");
+        //     // border: 1px solid #f6e7b0;
+        //     color: rgba(245, 158, 64, 0.76);
+        // }
+    }
+    .active {
+        box-shadow: 0 0 15px 1px #f6e7b0;
+        // border: 2px solid map-get($colors, "white");
+        // border: 1px solid #f6e7b0;
+        color: rgba(245, 158, 64, 0.76);
     }
 }
 
@@ -212,12 +226,16 @@ body {
         text-align: center;
         transition: all ease-in 0.5s;
         &:hover {
-            background: darken($button-color, 13%);
+            background: darken($button-color, 7%);
         }
-        &:active {
-            background: darken($button-color, 30%);
-            opacity: 0.6;
-        }
+        // &:active {
+        //     background: darken($button-color, 13%);
+        //     box-shadow: 0 0 15px 7px #f9e59e;
+        // }
+    }
+    .active {
+        background: darken($button-color, 13%);
+        box-shadow: 0 0 15px 5px #f9e59e;
     }
 }
 
