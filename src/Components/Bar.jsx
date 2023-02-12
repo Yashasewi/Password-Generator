@@ -1,3 +1,4 @@
+import { useState } from "react";
 import lockIcon from "../assets/Images/lock.png";
 import resetIcon from "../assets/Images/Reset.png";
 import copyIcon from "../assets/Images/copy.png";
@@ -43,9 +44,19 @@ function generatePassword(
 
 // Component to display the password and related icons
 function Bar({ length }) {
+    const [reset, setReset] = useState(false);
+    // Function to reset the password
+    function ResetPassword() {
+        reset ? setReset(false) : setReset(true);
+    }
+
     // Generate the password of the specified length
     const password = length > 0 ? generatePassword(length) : "";
-
+    // Function to copy the password to the clipboard
+    function CopyToClipboard() {
+        navigator.clipboard.writeText(password);
+        CopyPopUp();
+    }
     // Array of dots to display if no password is generated
     const dots = Array(8)
         .fill(0)
@@ -66,12 +77,18 @@ function Bar({ length }) {
                 )}
                 {/* Display reset and copy icons */}
                 <div className="icon-group">
-                        <img
-                            src={resetIcon}
-                            className="reset-icon"
-                            alt="Reset"
-                        />
-                        <img src={copyIcon} className="copy" alt="Copy" />
+                    <img
+                        src={resetIcon}
+                        className="reset"
+                        alt="Reset"
+                        onClick={ResetPassword}
+                    />
+                    <img
+                        src={copyIcon}
+                        className="copy"
+                        alt="Copy"
+                        onClick={CopyToClipboard}
+                    />
                     {/* <div className="copy">{<AiOutlineCopy/>}</div> */}
                 </div>
             </div>
