@@ -1,10 +1,6 @@
 const CharacterTypeButtons = ({
-    letters,
-    setLetters,
-    numbers,
-    setNumbers,
-    symbols,
-    setSymbols,
+    charSet: { letters, numbers, symbols },
+    charSetSetters: { setLetters, setNumbers, setSymbols },
 }) => {
     return (
         <div className="input-buttons">

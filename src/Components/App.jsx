@@ -18,6 +18,18 @@ function App() {
         symbols,
     };
 
+    const charSetSetters = {
+        setLetters,
+        setNumbers,
+        setSymbols,
+    };
+
+    const passwordTypes = {
+        moreSecure,
+        easyToRemember,
+    };
+
+
     return (
         <div className="App">
             <div className="heading">
@@ -27,7 +39,11 @@ function App() {
                     safe.
                 </h5>
             </div>
-            <Bar length={length} charSet={charSet} />
+            <Bar
+                length={length}
+                charSet={charSet}
+                passwordTypes={passwordTypes}
+            />
             <div className="buttons">
                 <button
                     className={`btn ${moreSecure ? "active" : ""}`}
@@ -44,12 +60,8 @@ function App() {
             </div>
             <LengthSlider length={length} setLength={setLength} />
             <CharacterTypeButtons
-                letters={letters}
-                setLetters={setLetters}
-                numbers={numbers}
-                setNumbers={setNumbers}
-                symbols={symbols}
-                setSymbols={setSymbols}
+                charSet={charSet}
+                charSetSetters={charSetSetters}
             />
         </div>
     );

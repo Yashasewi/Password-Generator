@@ -3,10 +3,7 @@ import lockIcon from "../assets/Images/lock.png";
 import resetIcon from "../assets/Images/Reset.png";
 import copyIcon from "../assets/Images/copy.png";
 
-import { AiOutlineCopy } from "react-icons/ai";
-
 // Object containing allowed characters for password
-//!@#$%^&*()_+-=[]{}|;:',.<>/?
 const AllChars = {
     Uppercase: "QWERTYUIOPASDFGHJKLZXCVBNM",
     Lowercase: "qwertyuiopasdfghjklzxcvbnm",
@@ -14,14 +11,20 @@ const AllChars = {
     Symbols: "!$^&*-=+_?",
 };
 
-const EasyChars = {
-    ...AllChars,
-    Symbols: "",
-};
-
-const StrongChars = {
+const moreSecure = {
     ...AllChars,
     Symbols: "!@#$%^&*()_+-=[]{}|;:',.<>/?",
+};
+
+const easyToRemember = {
+    ...AllChars,
+    Symbols: "",
+    Numbers: "12684",
+};
+
+const easyToRememberMoreSecure = {
+    ...AllChars,
+    Symbols: "!@#$%",
 };
 
 // Function to generate a random password of specified length
@@ -54,23 +57,15 @@ function generatePassword(
 }
 
 // Component to display the password and related icons
-function Bar({ length, CharSet }) {
+function Bar({ length, charSet, passwordTypes }) {
     const [reset, setReset] = useState(false);
-    // Function to reset the password
-    function ResetPassword() {
-        setReset(!reset);
-    }
 
-    // console.log(length);
-    // console.log(CharSet);
+    // // console.log(length);
+    // console.log(charSet.letters, charSet.numbers, charSet.symbols);
 
     // Generate the password of the specified length
     const password = length > 0 ? generatePassword(length) : "";
-    // Function to copy the password to the clipboard
-    function CopyToClipboard() {
-        navigator.clipboard.writeText(password);
-        CopyPopUp();
-    }
+
     // Array of dots to display if no password is generated
     const dots = Array(8)
         .fill(0)
@@ -95,13 +90,13 @@ function Bar({ length, CharSet }) {
                         src={resetIcon}
                         className="reset"
                         alt="NewPassword"
-                        onClick={ResetPassword}
+                        onClick={() => setReset(!reset)}
                     />
                     <img
                         src={copyIcon}
                         className="copy"
                         alt="Copy"
-                        onClick={CopyToClipboard}
+                        onClick={() => navigator.clipboard.writeText(password)}
                     />
                     {/* <div className="copy">{<AiOutlineCopy/>}</div> */}
                 </div>
